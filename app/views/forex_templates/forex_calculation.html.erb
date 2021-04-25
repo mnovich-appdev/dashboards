@@ -1,0 +1,9 @@
+<h1>Convert <%=params.fetch("first_currency")%> to <%=params.fetch("second_currency")%></h1>
+
+<div>
+<%url = "https://api.exchangerate.host/convert?from="+params.fetch("first_currency")+"&to="+params.fetch("second_currency")%>
+<%raw_data = open(url).read%>
+<%parsed_data = JSON.parse(raw_data)%>
+<%rate = parsed_data.fetch("info").fetch("rate")%>
+1 <%=params.fetch("first_currency")%> equals <%=rate%> <%=params.fetch("second_currency")%>.
+</div>

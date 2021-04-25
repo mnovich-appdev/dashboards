@@ -1,0 +1,13 @@
+<h1>Convert <%=params.fetch("first_currency")%></h1>
+
+<div>
+  <ul>
+    <% @currency_symbols.each do |a_symbol| %>
+    <li>
+      <a href="/forex/<%=params.fetch("first_currency")%>/<%=a_symbol%>">
+        Convert 1 <%=params.fetch("first_currency")%> to <%=a_symbol%>...
+      </a>
+    </li>
+  <% end %>
+  </ul>
+</div>
