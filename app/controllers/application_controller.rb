@@ -21,12 +21,11 @@ class ApplicationController < ActionController::Base
   end
 
   def calculate_forex_rate
-    url = "https://api.exchangerate.host/symbols"
+    url = "https://api.exchangerate.host/convert?from="+params.fetch("first_currency")+"&to="+params.fetch("second_currency")
     raw_data = open(url).read
     parsed_data = JSON.parse(raw_data)
-    symbols_hash = parsed_data.fetch("symbols")
-    @currency_symbols = symbols_hash.keys    
-
+    @rate = parsed_data.fetch("info").fetch("rate")
+    
     render({:template => "forex_templates/forex_calculation.html.erb"})
   end
 
